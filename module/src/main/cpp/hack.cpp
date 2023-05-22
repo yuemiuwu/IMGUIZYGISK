@@ -22,6 +22,15 @@ static bool                 g_IsSetup = false;
 static std::string          g_IniFileName = "";
 static utils::module_info   g_TargetModule{};
 
+
+void *getAbsAddress(uintptr_t offset) {
+    uintptr_t base = reinterpret_cast<uintptr_t>(g_TargetModule.start_address);
+    return reinterpret_cast<void*>(base + offset);
+}
+
+#define 
+HOOK(t,r,o) utils::hook(getAbsAddress(t),(func_t)r,(func_t*)&o)
+
 HOOKAF(void, Input, void *thiz, void *ex_ab, void *ex_ac) {
     origInput(thiz, ex_ab, ex_ac);
     ImGui_ImplAndroid_HandleInputEvent((AInputEvent *)thiz);
@@ -132,9 +141,7 @@ void hack_start(const char *_game_data_dir) {
 
 
 
-DobbyHook((void *)getAbsoluteAddress("libil2cpp.so", "0x133949"), (void *)ambus, (void **)&old_ambus);
-
-
+DobbyHook(getAbsAddress(0x1A3281C), (void*)ambus, (void**)&old_ambus);
 
 
     
