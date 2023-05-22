@@ -98,7 +98,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 
     ImGuiIO &io = ImGui::GetIO();
         if (io.WantCaptureMouse) {
-            return true;
+            return false;
         }
 
     ImGui_ImplOpenGL3_NewFrame();
