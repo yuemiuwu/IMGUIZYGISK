@@ -3,6 +3,6 @@
 
 // TODO: change this
 #define TargetLibName "libil2cpp.so"
-#define GamePackageName "com.superplaystudios.dicedreams"
+#define GamePackageName "com.gear2.growslayer"
 
 #endif //ZYGISK_IMGUI_MODMENU_GAME_H
