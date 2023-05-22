@@ -132,8 +132,7 @@ void hack_start(const char *_game_data_dir) {
 
 
 
-
-DobbyHook((void *)getAbsoluteAddress("libil2cpp", "0x1A3281C"), (void *)ambus, (void **)&old_ambus);
+DobbyHook((void *)getAbsoluteAddress("libil2cpp", "0x133949"), (void *)ambus, (void **)&old_ambus);
 
 
 
