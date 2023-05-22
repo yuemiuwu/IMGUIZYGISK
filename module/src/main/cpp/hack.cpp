@@ -110,13 +110,14 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     
 
-  if (ImGui::Begin("AMIYA", nullptr));
+  if (ImGui::Begin("AMIYA", nullptr));{
+	
     
     ImGui::Checkbox("Testhek", &Tuanmeta);
     
     ImGui::End();
      
-     
+     }
      
     ImGui::EndFrame();
     ImGui::Render();
