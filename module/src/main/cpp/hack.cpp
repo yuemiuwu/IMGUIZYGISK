@@ -28,6 +28,11 @@ void *getAbsAddress(uintptr_t offset) {
     return reinterpret_cast<void*>(base + offset);
 }
 
+#define HOOK(t,r,o) utils::hook(getAbsAddress(t),(func_t)r,(func_t*)&o)
+
+// USAGE
+
+
 
 
 HOOKAF(void, Input, void *thiz, void *ex_ab, void *ex_ac) {
