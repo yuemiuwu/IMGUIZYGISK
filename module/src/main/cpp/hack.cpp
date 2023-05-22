@@ -42,7 +42,7 @@ void ambus(void *instance, int value, void* analyticsSource) {
 		
 	
     
-    value = 10; // You can change this
+    value = 10;
 	
 	}
     
@@ -91,11 +91,18 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     
 
-    ImGui::Begin(OBFUSCATE("AMIYA"));
+     if (ImGui::Begin("TuanMeta", nullptr)) {
     
     ImGui::Checkbox("Test", &Tuanmeta);
     
     ImGui::End();
+    
+    
+    
+    
+    
+    
+    }
     
     
     
@@ -126,7 +133,7 @@ void hack_start(const char *_game_data_dir) {
 
 
 
-DobbyHook((void *)getAbsoluteAddress("libil2cpp", "0x1A3281C"), (void *)ambus, (void **)old_ambus);
+DobbyHook((void *)getAbsoluteAddress("libil2cpp", "0x1A3281C"), (void *)ambus, (void **)&old_ambus);
 
 
 
