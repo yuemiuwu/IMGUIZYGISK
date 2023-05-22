@@ -95,7 +95,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     ImGui::Checkbox("Test", &Tuanmeta);
     
-    ImGui::end();
+    ImGui::End();
     
     
     
@@ -126,7 +126,7 @@ void hack_start(const char *_game_data_dir) {
 
 
 
-DobbyHook((void *)getAbsoluteAddress("libil2cpp", 0x1A3281C), (void *)ambus, (void **)old_ambus);
+DobbyHook((void *)getAbsoluteAddress("libil2cpp", "0x1A3281C"), (void *)ambus, (void **)old_ambus);
 
 
 
