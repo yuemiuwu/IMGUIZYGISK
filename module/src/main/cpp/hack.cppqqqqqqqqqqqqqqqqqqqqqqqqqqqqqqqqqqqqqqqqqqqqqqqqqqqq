@@ -103,9 +103,9 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     
 
-    if (ImGui::Begin("TuanMeta", nullptr)) {
+    if (!ImGui::Begin("hahahahahahahahah", nullptr, 0)) return;
     
-    ImGui::Checkbox("Test", &Tuanmeta);
+    ImGui::Checkbox("Testhek", &Tuanmeta);
     
     ImGui::End();
     
