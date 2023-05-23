@@ -193,7 +193,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     ImGui::Checkbox("Gold Hack", &Tuanmeta);
     ImGui::Checkbox("Xp Hack", &Tuanmeta1);
-    ImGui::SlideFloat("Run Hack", &SliderValue, 1, 100);
+    ImGui::SliderFloat("Run Hack", &SliderValue, 1, 100);
     
     ImGui::End();
     
