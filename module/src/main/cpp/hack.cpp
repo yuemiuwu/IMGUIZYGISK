@@ -191,7 +191,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     
 
-      if (ImGui::Begin(" Mod by AMIYA | telegr   if (ImGui::BeginTabBar("Mod by AMIYA | telegram: @MyAlessa", ImGuiTabBarFlags_None)) 
+      if (ImGui::BeginTabBar("Mod by AMIYA | telegram: @MyAlessa", ImGuiTabBarFlags_None)) 
 		       
 		       
 		       {
