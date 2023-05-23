@@ -192,9 +192,7 @@ void SetupImGui() {
     icons_config.GlyphMinAdvanceX = iconFontSize;
     io.Fonts->AddFontFromMemoryCompressedTTF(fa_solid_compressed_data, fa_solid_compressed_size, iconFontSize, &icons_config, icons_ranges);
 
-    ImFontConfig font_cfg;
-    font_cfg.SizePixels = 22.0f;
-    io.Fonts->AddFontDefault(&font_cfg);
+    
 
     ImGui::GetStyle().ScaleAllSizes(3.0f);
 }
