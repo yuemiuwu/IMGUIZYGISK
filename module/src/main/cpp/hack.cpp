@@ -61,8 +61,8 @@ long addgold(void *instance) {
 
 
 
-float (*old_addgold)(void *instance);
-float addgold(void *instance) {
+float (*old_addexp)(void *instance);
+float addexp(void *instance) {
     if (instance != NULL && Tuanmeta1) {
        return 50000000;
     }
