@@ -90,7 +90,7 @@ int DataCheck_H(void *instance) {
     if (instance != NULL && DataCheck_Hacker) {
        return 0;
     }
-    return old_DataCheck_H(instance);
+    return DataCheck_Hacker(instance);
 }
 
 
