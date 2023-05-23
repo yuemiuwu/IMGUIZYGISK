@@ -155,7 +155,7 @@ void UpgradePrice(void *instance, int initPrice, int level) {
 
     if (instance != NULL && UpgradePrice1) {
 
-       initPrice = 25;
+       initPrice = 1;
 
     }
 
