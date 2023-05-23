@@ -48,7 +48,6 @@ bool Tuanmeta1 = false;
 bool hackerr = true;
 bool DataCheck_Hacker = true;
 bool HackerCo = true;
-bool fastruun = false;
 
 
 
@@ -59,7 +58,8 @@ bool fastruun = false;
 
 
 
-bool fastruun = false ;
+
+
 
 
 
