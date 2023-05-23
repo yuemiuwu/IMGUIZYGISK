@@ -93,12 +93,16 @@ float addexp(void *instance) {
 
 
 float SliderValue;
+float oldValue = 0;
 void (*old_addweapon)(void *instance);
 void addweapon(void *instance) {
-    if (instance != NULL && SliderValue > 0) {
-        *(float *) ((uint64_t) instance + 0x170) = SliderValue;
+    if (instance != NULL && SliderValue > 0) {
+        if (oldValue <= 0) oldValue = *(float *) ((uint64_t) instance + 0x170);
+        *(float *) ((uint64_t) instance + 0x170) = SliderValue;
+    } else if (instance != NULL && SliderValue <= 0 && oldValue > 0)  {
+         *(float *) ((uint64_t) instance + 0x170) = oldValue;
     }
-    return old_addweapon(instance);
+    return old_addweapon(instance);
 }
 
 
@@ -188,7 +192,14 @@ void addStageInfo(void *instance) {
 
 
 
-
+int SliderValue1;
+int (*old_get_AtkBase)(void *instance);
+int get_AtkBase(void *instance) {
+    if (instance != NULL && SliderValue1 > 0) {
+       return   SliderValue1 * 10000000;
+    }
+    return old_get_AtkBase(instance);
+}
 
 
 
@@ -299,8 +310,8 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     {
 
-       ImGui::SliderFloat("Run Hack", &SliderValue, 18, 100);
-	    
+       ImGui::SliderFloat("Run Hack", &SliderValue, 0, 100);
+	   ImGui::SliderInt("DMG HACK", &SliderValue1, 0, 100);
 	    
 	    
 	    
@@ -355,6 +366,11 @@ DobbyHook(
 getAbsAddress(0x1a14c38), (void*) addStageInfo, (void**)&old_addStageInfo);
 DobbyHook(
 getAbsAddress(0x1e8b44c), (void*) addweapon, (void**)&old_addweapon);
+
+DobbyHook(
+getAbsAddress(0x1e99104), (void*) get_AtkBase, (void**)&old_get_AtkBase);
+
+
 
 //anti-cheat/here
 
