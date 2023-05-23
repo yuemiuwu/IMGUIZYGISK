@@ -233,7 +233,7 @@ getAbsAddress(0x3f583b0), (void*) addexp, (void**)&old_addexp);
 
 
 DobbyHook(
-getAbsAddress(0x1e98cf0), (void*) addweapon, (void**)&old_addweapon);
+getAbsAddress(0x1e8b44c), (void*) addweapon, (void**)&old_addweapon);
 
 //anti-cheat/here
 
