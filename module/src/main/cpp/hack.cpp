@@ -17,8 +17,8 @@
 #include "imgui_impl_opengl3.h"
 #include "MemoryPatch.h"
 #include <fonts/ShantellSans.h>
-
-#include <fontsGoogleSans.h>
+#include <fonts/FontAwesome6_regular.h>
+#include <fonts/GoogleSans.h>
 
 #include <fonts/IconsFontAwesome6.h>
 
