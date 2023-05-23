@@ -166,6 +166,31 @@ void SetupImGui() {
     ImGui_ImplAndroid_Init(nullptr);
     ImGui_ImplOpenGL3_Init("#version 300 es");
     ImGui::StyleColorsDark();
+	io.Fonts->Clear();
+    float fontBaseSize = 28.4f;
+
+    static const ImWchar rangesBasic[] = {
+        0x0020,0x00FF, // Basic Latin + Latin Supplement
+        0x03BC,0x03BC, // micro
+        0x03C3,0x03C3, // small sigma
+        0x2013,0x2013, // en dash
+        0x2264,0x2264, // less-than or equal to
+        0,
+    };
+    ImFontConfig font_cfg;
+    io.Fonts->AddFontFromMemoryCompressedTTF(GoogleSans_compressed_data, GoogleSans_compressed_size, fontBaseSize, &font_cfg, rangesBasic);
+
+
+    float iconFontSize = fontBaseSize * 2.0f / 3.0f; // FontAwesome fonts need to have their sizes reduced by 2.0f/3.0f in order to align correctly
+    static const ImWchar icons_ranges[] = {
+        ICON_MIN_FA,ICON_MAX_16_FA,
+        0
+    };
+    ImFontConfig icons_config;
+    icons_config.MergeMode = true;
+    icons_config.PixelSnapH = true;
+    icons_config.GlyphMinAdvanceX = iconFontSize;
+    io.Fonts->AddFontFromMemoryCompressedTTF(fa_solid_compressed_data, fa_solid_compressed_size, iconFontSize, &icons_config, icons_ranges);
 
     ImFontConfig font_cfg;
     font_cfg.SizePixels = 22.0f;
