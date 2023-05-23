@@ -74,7 +74,7 @@ long addgold(void *instance) {
 }
 
 
-
+float SliderValue;
 float (*old_addexp)(void *instance);
 float addexp(void *instance) {
     if (instance != NULL && Tuanmeta1) {
@@ -82,6 +82,8 @@ float addexp(void *instance) {
     }
     return old_addexp(instance);
 }
+
+
 
 void (*old_addweapon)(void *instance);
 void addweapon(void *instance) {
