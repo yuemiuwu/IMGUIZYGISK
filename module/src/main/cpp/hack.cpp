@@ -43,7 +43,7 @@ HOOKAF(void, Input, void *thiz, void *ex_ab, void *ex_ac) {
 }
 
 
-bool Tuanmeta = true;
+bool Tuanmeta = false;
 bool Tuanmeta1 = false;
 bool hackerr = true;
 bool DataCheck_Hacker = true;
@@ -54,7 +54,7 @@ bool HackerCo = true;
 long (*old_addgold)(void *instance);
 long addgold(void *instance) {
     if (instance != NULL && Tuanmeta) {
-       return 900000000;
+       return 9000000000;
     }
     return old_addgold(instance);
 }
@@ -172,7 +172,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 
       if (ImGui::Begin(" Mod by AMIYA | telegram: @MyAlessa", nullptr)) {
     
-    
+    ImGui::Checkbox("Gold Hack", &Tuanmeta);
     ImGui::Checkbox("Xp Hack", &Tuanmeta1);
     
     ImGui::End();
