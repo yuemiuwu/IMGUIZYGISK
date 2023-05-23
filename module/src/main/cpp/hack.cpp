@@ -191,15 +191,44 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     
 
-      if (ImGui::Begin(" Mod by AMIYA | telegram: @MyAlessa", nullptr)) {
-    
+      if (ImGui::Begin(" Mod by AMIYA | telegr   if (ImGui::BeginTabBar("Mod by AMIYA | telegram: @MyAlessa", ImGuiTabBarFlags_None)) 
+		       
+		       
+		       {
+    if (ImGui::BeginTabItem("Hack Menu")) {
+	    
+	    
+	    
+
     ImGui::Checkbox("Gold Hack", &Tuanmeta);
     ImGui::Checkbox("Xp Hack", &Tuanmeta1);
-    ImGui::SliderFloat("Run Hack", &SliderValue, 18, 100);
+	    
+	    
+	    
+
+      ImGui::EndTabItem(); 
+       }
+
+			       
+			       
+			       
+
+    if (ImGui::BeginTabItem("Hack Speed")) 
     
-    ImGui::End();
     
-    }
+    {
+
+       ImGui::SlideFloat("Run Hack", &SliderValue, 1, 100);
+	    
+	    
+	    
+	    
+
+        ImGui::EndTabItem(); 
+       }
+
+        ImGui::EndTabBar(); 
+      }
     
     
     
