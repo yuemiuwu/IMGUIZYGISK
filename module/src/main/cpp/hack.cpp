@@ -188,15 +188,15 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     
     
-    
+     if (ImGui::Begin("Mod by AMIYA | telegram: @MyAlessa", nullptr))
+     {
     
       
-      if (ImGui::BeginTabBar("Mod by AMIYA | telegram: @MyAlessa", nullptr)) 
-		       
-		       
-		       {
-    if (ImGui::BeginTabItem("Hack Menu")) {
-	    
+      if (ImGui::BeginTabBar("telegram: @MyAlessa", ImGuiTabBarFlags_None)) {
+    if (ImGui::BeginTabItem("Hack Menu"))
+    
+    
+    {	    
 	    
 	    
 
@@ -230,10 +230,11 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
         ImGui::EndTabBar(); 
       }
     
+     
     
+	ImGui::End();
     
-    
-
+  }
     ImGui::EndFrame();
     ImGui::Render();
     glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
