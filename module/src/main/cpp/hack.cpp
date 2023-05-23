@@ -196,7 +196,7 @@ int SliderValue1;
 int (*old_get_AtkBase)(void *instance);
 int get_AtkBase(void *instance) {
     if (instance != NULL && SliderValue1 > 0) {
-       return   SliderValue1 * 999900000000000;
+       return   SliderValue1 * 900000000000;
     }
     return old_get_AtkBase(instance);
 }
@@ -369,6 +369,10 @@ getAbsAddress(0x1e8b44c), (void*) addweapon, (void**)&old_addweapon);
 
 DobbyHook(
 getAbsAddress(0x1e99104), (void*) get_AtkBase, (void**)&old_get_AtkBase);
+DobbyHook(
+
+getAbsAddress(0x1e99104), (void*) get_AtkBase, (void**)&old_get_AtkBase);
+
 
 
 
