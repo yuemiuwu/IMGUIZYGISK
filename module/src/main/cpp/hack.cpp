@@ -46,7 +46,7 @@ HOOKAF(void, Input, void *thiz, void *ex_ab, void *ex_ac) {
 bool Tuanmeta = true;
 bool Tuanmeta1 = false;
 bool hackerr = true;
-bool DataCheck_H = true;
+bool DataCheck_Hacker = true;
 bool HackerCo = true;
 
 
@@ -87,7 +87,7 @@ bool addcheat(void *instance, bool firstCheat) {
 
 int (*old_DataCheck_H)(void *instance, void );
 int DataCheck_H(void *instance) {
-    if (instance != NULL && DataCheck_H) {
+    if (instance != NULL && DataCheck_Hacker) {
        return 0;
     }
     return old_DataCheck_H(instance);
