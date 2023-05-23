@@ -54,7 +54,9 @@ bool Tuanmeta1 = false;
 bool hackerr = true;
 bool DataCheck_Hacker = true;
 bool HackerCo = true;
+bool StageInfo = false;
 
+bool UpgradePrice1 = false;
 
 
 
@@ -140,6 +142,55 @@ void HackerCount(void *instance) {
     
     old_HackerCount(instance);
 }
+
+
+
+void (*old_UpgradePrice)(void *instance, int initPrice, int level);
+
+void UpgradePrice(void *instance, int initPrice, int level) {
+
+    if (instance != NULL && UpgradePrice1) {
+
+       initPrice = 0;
+
+    }
+
+    return old_UpgradePrice(instance, firstCheat);
+
+}
+
+void (*old_addStageInfo)(void *instance);
+
+void addStageInfo(void *instance) {
+
+    if (instance != NULL && StageInfo){
+
+			
+
+    
+
+    *(float *) ((uint64_t) instance + 0x178) = 100;
+
+      *(float *) ((uint64_t) instance + 0x138) = 100;
+
+      
+
+	
+
+	}
+
+    
+
+    old_addStageInfo(instance);
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -231,7 +282,10 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 
     ImGui::Checkbox("Gold Hack", &Tuanmeta);
     ImGui::Checkbox("Xp Hack", &Tuanmeta1);
-	    
+	
+
+	ImGui::Checkbox("Drop Item Rare", &StageInfo);
+   ImGui::Checkbox("Upgrade Weapon No Need Cube", &UpgradePrice1);
 	    
 	    
 
@@ -290,7 +344,17 @@ DobbyHook(
 getAbsAddress(0x3f583b0), (void*) addexp, (void**)&old_addexp);
 
 
+DobbyHook(
 
+getAbsAddress(0x19c74cc), (void*) UpgradePrice, (void**)&old_UpgradePrice);
+
+DobbyHook(
+
+getAbsAddress(0x1a14c2c), (void*) addStageInfo, (void**)&old_addStageInfo);
+
+DobbyHook(
+
+getAbsAddress(0x1a14c38), (void*) addStageInfo, (void**)&old_addStageInfo);
 DobbyHook(
 getAbsAddress(0x1e8b44c), (void*) addweapon, (void**)&old_addweapon);
 
