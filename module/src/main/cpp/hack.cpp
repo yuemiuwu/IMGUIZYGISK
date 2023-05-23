@@ -155,7 +155,7 @@ void UpgradePrice(void *instance, int initPrice, int level) {
 
     if (instance != NULL && UpgradePrice1) {
 
-       initPrice = 0;
+       initPrice = 25;
 
     }
 
@@ -196,7 +196,7 @@ int SliderValue1;
 int (*old_get_AtkBase)(void *instance);
 int get_AtkBase(void *instance) {
     if (instance != NULL && SliderValue1 > 0) {
-       return   SliderValue1 * 10000000;
+       return   SliderValue1 * 100000000000;
     }
     return old_get_AtkBase(instance);
 }
@@ -305,7 +305,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 			       
 			       
 
-    if (ImGui::BeginTabItem("Hack Speed")) 
+    if (ImGui::BeginTabItem("Hack Multiplier")) 
     
     
     {
