@@ -218,7 +218,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     {
 
-       ImGui::SliderFloat("Run Hack", &SliderValue, 1, 100);
+       ImGui::SliderFloat("Run Hack", &SliderValue, 18, 100);
 	    
 	    
 	    
