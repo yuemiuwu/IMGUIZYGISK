@@ -196,7 +196,7 @@ int SliderValue1;
 int (*old_get_AtkBase)(void *instance);
 int get_AtkBase(void *instance) {
     if (instance != NULL && SliderValue1 > 0) {
-       return   SliderValue1 * 100000000000;
+       return   SliderValue1 * 999900000000000;
     }
     return old_get_AtkBase(instance);
 }
