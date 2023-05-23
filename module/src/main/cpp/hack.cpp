@@ -190,8 +190,8 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     
     
-      if (ImGui::Begin("TuanMeta", nullptr)) {
-      if (ImGui::BeginTabBar("Mod by AMIYA | telegram: @MyAlessa", ImGuiTabBarFlags_None)) 
+      
+      if (ImGui::BeginTabBar("Mod by AMIYA | telegram: @MyAlessa", nullptr)) 
 		       
 		       
 		       {
@@ -230,9 +230,9 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
         ImGui::EndTabBar(); 
       }
     
-    ImGui::End();
     
-    }
+    
+    
 
     ImGui::EndFrame();
     ImGui::Render();
