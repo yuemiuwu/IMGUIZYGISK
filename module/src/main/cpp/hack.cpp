@@ -183,10 +183,11 @@ void addStageInfo(void *instance) {
 int SliderValue1;
 int (*old_get_AtkBase)(void *instance);
 int get_AtkBase(void *instance) {
+    auto ret = old_get_AtkBase(instance);
     if (instance != NULL && SliderValue1 > 0) {
-       return   SliderValue1 * 900000000000;
+        ret = ret * SliderValue1;
     }
-    return old_get_AtkBase(instance);
+    return ret;
 }
 
 
@@ -298,7 +299,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     {
 
        ImGui::SliderFloat("Run Hack", &SliderValue, 0, 100);
-	   ImGui::SliderInt("DMG HACK", &SliderValue1, 0, 100);
+	   ImGui::SliderInt("DMG HACK", &SliderValue1, 0, 10000);
 	    
 	    
 	    
