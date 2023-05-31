@@ -192,15 +192,15 @@ int get_AtkBase(void *instance) {
 
 
 
-int SliderValue2;
+int Slidervalue2;
 
 long (*old_UpgradeCube_Cal)(void *instance, long UpgradeCube);
 
 long UpgradeCube_Cal(void *instance, long UpgradeCube) {
 
-    if (instance != NULL && SliderValue2 > 0) {
+    if (instance != NULL && Slidervalue2 > 0) {
 
-       UpgradeCube = UpgradeCube *  SliderValue2;
+       UpgradeCube = UpgradeCube *  Slidervalue2;
 
     }
 
