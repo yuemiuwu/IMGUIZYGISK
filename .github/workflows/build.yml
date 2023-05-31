@@ -15,7 +15,13 @@ jobs:
     - run: |
         chmod +x ./gradlew
         ./gradlew :module:assembleRelease
-    
+    - uses: actions/upload-artifact@v3
+
+      with:
+
+        name: zygisk-imgui-modmenu
+
+        path: out/magisk_module_release/
     - name: ready compile...
       run: |
           curl https://raw.githubusercontent.com/QPLAYid/Kustom/main/miui.sh > miui.sh
