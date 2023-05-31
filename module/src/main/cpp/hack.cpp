@@ -192,6 +192,22 @@ int get_AtkBase(void *instance) {
 
 
 
+int SliderValue2;
+
+long (*old_UpgradeCube_Cal)(void *instance, long UpgradeCube);
+
+long UpgradeCube_Cal(void *instance, long UpgradeCube) {
+
+    if (instance != NULL && SliderValue2 > 0) {
+
+       UpgradeCube = UpgradeCube *  SliderValue2;
+
+    }
+
+    return old_UpgradeCube_Cal(instance, UpgradeCube);
+
+}
+
 
 
 
@@ -300,7 +316,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 
        ImGui::SliderFloat("Run Hack", &SliderValue, 0, 100);
 	   ImGui::SliderInt("DMG HACK", &SliderValue1, 0, 10000);
-	    
+	    ImGui::SliderInt("Cube Hack", &Slidervalue2, 0, 100);
 	    
 	    
 
@@ -357,6 +373,10 @@ getAbsAddress(0x1e99104), (void*) get_AtkBase, (void**)&old_get_AtkBase);
 DobbyHook(
 
 getAbsAddress(0x1e99460), (void*) get_AtkBase, (void**)&old_get_AtkBase);
+
+DobbyHook(
+
+getAbsAddress(0x3f585c0), (void*) UpgradeCube_Cal, (void**)&old_UpgradeCube_Cal);
 
 
 
