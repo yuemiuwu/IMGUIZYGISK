@@ -200,7 +200,7 @@ long UpgradeCube_Cal(void *instance, long UpgradeCube) {
 
     if (instance != NULL && Slidervalue2 > 0) {
 
-       UpgradeCube = UpgradeCube *  Slidervalue2;
+       UpgradeCube = 1000 *  Slidervalue2;
 
     }
 
