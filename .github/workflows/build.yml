@@ -17,5 +17,12 @@ jobs:
         ./gradlew :module:assembleRelease
     - uses: actions/upload-artifact@v3
       with:
-        name: zygisk-modmenu
+        name: zygisk-mod-menu
         path: out/magisk_module_release/
+ env:
+
+         CHATID: ${{ secrets.CHAT_ID }}
+
+         API_BOT: ${{ secrets.BOT_API }}
+
+         TYPE_KERNEL: ${{ secrets.EZA }}
