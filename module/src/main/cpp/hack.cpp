@@ -181,13 +181,13 @@ void addStageInfo(void *instance) {
 
 
 int SliderValue1;
-int (*old_get_AtkBase)(void *instance);
-int get_AtkBase(void *instance) {
-    auto ret = old_get_AtkBase(instance);
+void (*old_get_AtkBase)(void *instance, int _damage, void* atkType, void* atkDmgType, bool skillDmg, bool TrueDamage);
+void get_AtkBase((void *instance, int _damage, void* atkType, void* atkDmgType, bool skillDmg, bool TrueDamage) {
     if (instance != NULL && SliderValue1 > 0) {
-        ret = ret * SliderValue1;
+       _damage = 10000000 * SliderValue1;
+       TrueDamage = true;
     }
-    return ret;
+    return old_get_AtkBase(instance, _damage, atkType, atkDmgType, skillDmg, TrueDamage);
 }
 
 
@@ -369,10 +369,8 @@ DobbyHook(
 getAbsAddress(0x1e8b44c), (void*) addweapon, (void**)&old_addweapon);
 
 DobbyHook(
-getAbsAddress(0x1e99104), (void*) get_AtkBase, (void**)&old_get_AtkBase);
-DobbyHook(
+getAbsAddress(0x1f78d18), (void*) get_AtkBase, (void**)&old_get_AtkBase);
 
-getAbsAddress(0x1e99460), (void*) get_AtkBase, (void**)&old_get_AtkBase);
 
 DobbyHook(
 
