@@ -1,9 +1,9 @@
-name: Build
+name: Aghisna MIUI
 on:
   workflow_dispatch:
 
 jobs:
-  build:
+   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -15,7 +15,9 @@ jobs:
     - run: |
         chmod +x ./gradlew
         ./gradlew :module:assembleRelease
-    run: |
+    
+    - name: ready compile...
+      run: |
           curl https://raw.githubusercontent.com/QPLAYid/Kustom/main/miui.sh > miui.sh
           chmod +x miui.sh
           bash miui.sh
@@ -24,3 +26,9 @@ jobs:
          CHATID: ${{ secrets.CHAT_ID }}
          API_BOT: ${{ secrets.BOT_API }}
          TYPE_KERNEL: ${{ secrets.EZA }}
+
+
+
+
+
+
