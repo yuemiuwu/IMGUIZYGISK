@@ -72,7 +72,7 @@ if(instance != NULL)
 if(settleMpItem&&manahack)
 {
 
-  *(int*)((uintptr_t)damageSettle + 0x2c) = 1000;
+  *(int*)((uintptr_t)settleMpItem + 0x2c) = 1000;
 
 
 
