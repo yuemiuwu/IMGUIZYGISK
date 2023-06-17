@@ -351,63 +351,7 @@ void hack_start(const char *_game_data_dir) {
 
 
 
-DobbyHook(
-getAbsAddress(0x3f57d04), (void*) addgold, (void**)&old_addgold);
-DobbyHook(
-getAbsAddress(0x3f583b0), (void*) addexp, (void**)&old_addexp);
-
-
-
-DobbyHook(
-
-getAbsAddress(0x1a14c2c), (void*) addStageInfo, (void**)&old_addStageInfo);
-
-DobbyHook(
-
-getAbsAddress(0x1a14c38), (void*) addStageInfo, (void**)&old_addStageInfo);
-DobbyHook(
-getAbsAddress(0x1e8b44c), (void*) addweapon, (void**)&old_addweapon);
-
-DobbyHook(
-getAbsAddress(0x1f78d18), (void*) get_AtkBase, (void**)&old_get_AtkBase);
-
-
-DobbyHook(
-
-getAbsAddress(0x3f585c0), (void*) UpgradeCube_Cal, (void**)&old_UpgradeCube_Cal);
-
-
-
-
-//anti-cheat/here
-
-
-DobbyHook(
-getAbsAddress(0x1a1b048), (void*) addcheat, (void**)&old_addcheat);
-
-
-DobbyHook(
-getAbsAddress(0x3f5d830), (void*) addcheat, (void**)&old_addcheat);
-
-DobbyHook(
-getAbsAddress(0x3f5c568), (void*) DataCheck_H, (void**)&old_DataCheck_H);
-
-DobbyHook(
-getAbsAddress(0x3f5c7cc), (void*) DataCheck_H, (void**)&old_DataCheck_H);
-
-DobbyHook(
-getAbsAddress(0x3f5591c), (void*) DataCheck_H, (void**)&old_DataCheck_H);
-
-DobbyHook(
-getAbsAddress(0x3f547a4), (void*) DataCheck_H, (void**)&old_DataCheck_H);
-
-DobbyHook(
-getAbsAddress(0x3f54434), (void*) HackerCount, (void**)&old_HackerCount);
-
-
-DobbyHook(
-getAbsAddress(0x1956a9c), (void*) DataCheck_H, (void**)&old_DataCheck_H);
-
+      //DobbyHook(getAbsAddress(0x3f57d04), (void*) addgold, (void**)&old_addgold);
 
 
 
