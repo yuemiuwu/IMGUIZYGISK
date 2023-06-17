@@ -268,7 +268,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 	    
 
     ImGui::Checkbox("Gold Hack", &nodamage);
-    ImGui::Chekbox("skill no cd",&nocooldown);
+    ImGui::Checkbox("skill no cd",&nocooldown);
     ImGui::Checkbox("Mana",&manahack);
 	    
 
