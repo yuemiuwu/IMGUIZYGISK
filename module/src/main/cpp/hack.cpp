@@ -92,18 +92,6 @@ float addexp(void *instance) {
 }
 
 
-float SliderValue;
-float oldValue = 0;
-void (*old_addweapon)(void *instance);
-void addweapon(void *instance) {
-    if (instance != NULL && SliderValue > 0) {
-        if (oldValue <= 0) oldValue = *(float *) ((uint64_t) instance + 0x170);
-        *(float *) ((uint64_t) instance + 0x170) = SliderValue;
-    } else if (instance != NULL && SliderValue <= 0 && oldValue > 0)  {
-         *(float *) ((uint64_t) instance + 0x170) = oldValue;
-    }
-    return old_addweapon(instance);
-}
 
 
 
@@ -180,33 +168,7 @@ void addStageInfo(void *instance) {
 
 
 
-int SliderValue1;
-void (*old_get_AtkBase)(void *instance, int _damage, void* atkType, void* atkDmgType, bool skillDmg, bool TrueDamage);
-void get_AtkBase((void *instance, int _damage, void* atkType, void* atkDmgType, bool skillDmg, bool TrueDamage) {
-    if (instance != NULL && SliderValue1 > 0) {
-       _damage = 10000000 * SliderValue1;
-       TrueDamage = true;
-    }
-    return old_get_AtkBase(instance, _damage, atkType, atkDmgType, skillDmg, TrueDamage);
-}
 
-
-
-int Slidervalue2;
-
-long (*old_UpgradeCube_Cal)(void *instance, long UpgradeCube);
-
-long UpgradeCube_Cal(void *instance, long UpgradeCube) {
-
-    if (instance != NULL && Slidervalue2 > 0) {
-
-       UpgradeCube = 1000 *  Slidervalue2;
-
-    }
-
-    return old_UpgradeCube_Cal(instance, UpgradeCube);
-
-}
 
 
 
@@ -314,9 +276,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     
     {
 
-       ImGui::SliderFloat("Run Hack", &SliderValue, 0, 100);
-	   ImGui::SliderInt("DMG HACK", &SliderValue1, 0, 10000);
-	    ImGui::SliderInt("Cube Hack", &Slidervalue2, 0, 100);
+       
 	    
 	    
 
