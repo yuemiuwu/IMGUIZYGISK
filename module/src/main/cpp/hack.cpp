@@ -53,9 +53,29 @@ bool nodamage = false;
 bool nocooldown = false;
 bool manahack = false;
 bool critical = true;
+bool cobapertama = false;
 
 
 
+
+
+
+void (*old_addNewDropCoin)(void *instance, int count, float x, float y);
+void addNewDropCoin(void *instance, int count, float x, float)
+{
+
+if(instance != NULL&&cobapertama)
+
+{
+count = 500000;
+}
+
+
+
+
+return old_addNewDropCoin(instance, count, x, y);
+
+}
 
 
 
@@ -270,7 +290,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     ImGui::Checkbox("Gold Hack", &nodamage);
     ImGui::Checkbox("skill no cd",&nocooldown);
     ImGui::Checkbox("Mana",&manahack);
-	    
+	ImGui::Checkbox("Coin",&cobapertama);
 
       ImGui::EndTabItem(); 
        }
@@ -343,9 +363,10 @@ DobbyHook(getAbsAddress(0x03a6a344), (void*) addEnterCd, (void**)&old_addEnterCd
 DobbyHook(getAbsAddress(0x02302478), (void*) addProcessExpendMp, (void**)&old_addProcessExpendMp);
 
 
-
+DobbyHook(getAbsAddress(0x02412bb4), (void*) addNewDropCoin, (void**)&old_addNewDropCoin);
 
       //
+
 
 
 
