@@ -50,6 +50,72 @@ HOOKAF(void, Input, void *thiz, void *ex_ab, void *ex_ac) {
 
 
 bool nodamage = false;
+bool nocooldown = false;
+bool manahack = false;
+bool critical = true;
+
+
+
+
+
+
+
+
+void (*old_addProcessExpendMp)(void *instance, void *settleMpItem);
+void addProcessExpendMp(void *instance, void *settleMpItem)
+{
+
+if(instance != NULL)
+
+{
+
+if(settleMpItem&&manahack)
+{
+
+  *(int*)((uintptr_t)damageSettle + 0x2c) = 1000;
+
+
+
+}
+
+
+}
+
+
+
+return old_addProcessExpendMp(instance, settleMpItem);
+}
+
+
+
+
+
+
+
+
+
+void (*old_addEnterCd)(void *instance);
+void addEnterCd(void *instance)
+{
+
+
+
+if(instance != NULL&&nocooldown)
+
+{
+return ({});
+
+
+
+}
+
+
+    
+    
+    
+    return old_addEnterCd(instance);
+}
+
 
 
 
@@ -90,12 +156,17 @@ void playerProcessDamage(void *instance, void *damageSettle)
   
   
   {
-  *(bool*)((uintptr_t)damageSettle + 0x2c) = true;
+
     *(float*)((uintptr_t)damageSettle + 0x34) = 90000 * slidervalue;
   
   
   }
+  if(damageSettle&&critical)
+  {
   
+    *(bool*)((uintptr_t)damageSettle + 0x2c) = true;
+  
+  }
   
   
   }
@@ -197,8 +268,8 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 	    
 
     ImGui::Checkbox("Gold Hack", &nodamage);
-    
-    
+    ImGui::Chekbox("skill no cd",&nocooldown);
+    ImGui::Checkbox("Mana",&manahack);
 	    
 
       ImGui::EndTabItem(); 
@@ -265,7 +336,11 @@ DobbyHook(getAbsAddress(0x33710b8), (void*) addProcessDamage, (void**)&old_addPr
 DobbyHook(getAbsAddress(0x337495c), (void*) playerProcessDamage, (void**)&old_playerProcessDamage);
 
 
+DobbyHook(getAbsAddress(0x03a6a9b0), (void*) addEnterCd, (void**)&old_addEnterCd);
 
+
+
+DobbyHook(getAbsAddress(0x02302478), (void*) addProcessExpendMp, (void**)&old_addProcessExpendMp);
 
 
 
