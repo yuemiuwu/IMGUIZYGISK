@@ -72,7 +72,7 @@ if(instance != NULL)
 if(settleMpItem&&manahack)
 {
 
-  *(int*)((uintptr_t)settleMpItem + 0x2c) = 1000;
+  *(int*)((uintptr_t)settleMpItem + 0x2c) = 0;
 
 
 
@@ -94,8 +94,8 @@ return old_addProcessExpendMp(instance, settleMpItem);
 
 
 
-int (*old_addEnterCd)(void *instance);
-int addEnterCd(void *instance)
+void (*old_addEnterCd)(void *instance);
+void addEnterCd(void *instance)
 {
 
 
@@ -103,7 +103,7 @@ int addEnterCd(void *instance)
 if(instance != NULL&&nocooldown)
 
 {
-return 0;
+return ({});
 
 
 
@@ -268,7 +268,7 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 	    
 
     ImGui::Checkbox("Gold Hack", &nodamage);
-    ImGui::Checkbox("skill no cd",&nocooldown);
+    ImGui::Chekbox("skill no cd",&nocooldown);
     ImGui::Checkbox("Mana",&manahack);
 	    
 
@@ -336,7 +336,7 @@ DobbyHook(getAbsAddress(0x33710b8), (void*) addProcessDamage, (void**)&old_addPr
 DobbyHook(getAbsAddress(0x337495c), (void*) playerProcessDamage, (void**)&old_playerProcessDamage);
 
 
-DobbyHook(getAbsAddress(0x03a6a9b0), (void*) addEnterCd, (void**)&old_addEnterCd);
+DobbyHook(getAbsAddress(0x03a6a344), (void*) addEnterCd, (void**)&old_addEnterCd);
 
 
 
