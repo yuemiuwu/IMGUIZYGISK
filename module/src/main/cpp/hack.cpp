@@ -61,7 +61,7 @@ bool cobapertama = false;
 
 
 void (*old_addNewDropCoin)(void *instance, int count, float x, float y);
-void addNewDropCoin(void *instance, int count, float x, float)
+void addNewDropCoin(void *instance, int count, float x, float y)
 {
 
 if(instance != NULL&&cobapertama)
