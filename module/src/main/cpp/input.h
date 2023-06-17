@@ -86,8 +86,8 @@ namespace Unity {
            
             // ubah offset nya liat di dump.cs
             //UnityEngine.InputLegacyModule.dll
-            auto ptr_GetTouch             = getAbsAddress(0x3f27180); // Class Input - GetTouch
-            auto ptr_GetMouseButtonDown   = getAbsAddress(0x3f27100); // Class Input - GetMouseButtonDown
+            auto ptr_GetTouch             = getAbsAddress(0x503377c); // Class Input - GetTouch
+            auto ptr_GetMouseButtonDown   = getAbsAddress(0x50336fc); // Class Input - GetMouseButtonDown
 
             if (ptr_GetTouch != nullptr && ptr_GetMouseButtonDown != nullptr) {
                 GetMouseButtonDown = reinterpret_cast<bool(*)(int)>((uintptr_t)ptr_GetMouseButtonDown);
