@@ -94,8 +94,8 @@ return old_addProcessExpendMp(instance, settleMpItem);
 
 
 
-void (*old_addEnterCd)(void *instance);
-void addEnterCd(void *instance)
+int (*old_addEnterCd)(void *instance);
+int addEnterCd(void *instance)
 {
 
 
@@ -103,7 +103,7 @@ void addEnterCd(void *instance)
 if(instance != NULL&&nocooldown)
 
 {
-return ({});
+return 0;
 
 
 
