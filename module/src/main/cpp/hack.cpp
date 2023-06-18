@@ -32,187 +32,12 @@ void *getAbsAddress(uintptr_t offset) {
     uintptr_t base = reinterpret_cast<uintptr_t>(g_TargetModule.start_address);
     return reinterpret_cast<void*>(base + offset);
 }
-
 #include "input.h"
 #define HOOK(t,r,o) utils::hook(getAbsAddress(t),(func_t)r,(func_t*)&o)
-
-
-
-
-
-
-
 HOOKAF(void, Input, void *thiz, void *ex_ab, void *ex_ac) {
     origInput(thiz, ex_ab, ex_ac);
     ImGui_ImplAndroid_HandleInputEvent((AInputEvent *)thiz);
-    return;
-}
-
-
-bool nodamage = false;
-bool nocooldown = false;
-bool manahack = false;
-bool critical = true;
-bool cobapertama = false;
-
-
-
-
-
-
-void (*old_addNewDropCoin)(void *instance, int count, float x, float y);
-void addNewDropCoin(void *instance, int count, float x, float y)
-{
-
-if(instance != NULL&&cobapertama)
-
-{
-count = 500000;
-}
-
-
-
-
-return old_addNewDropCoin(instance, count, x, y);
-
-}
-
-
-
-
-
-void (*old_addProcessExpendMp)(void *instance, void *settleMpItem);
-void addProcessExpendMp(void *instance, void *settleMpItem)
-{
-
-if(instance != NULL)
-
-{
-
-if(settleMpItem&&manahack)
-{
-
-  *(int*)((uintptr_t)settleMpItem + 0x2c) = 0;
-
-
-
-}
-
-
-}
-
-
-
-return old_addProcessExpendMp(instance, settleMpItem);
-}
-
-
-
-
-
-
-
-
-
-void (*old_addEnterCd)(void *instance);
-void addEnterCd(void *instance)
-{
-
-
-
-if(instance != NULL&&nocooldown)
-
-{
-return ({});
-
-
-
-}
-
-
-    
-    
-    
-    return old_addEnterCd(instance);
-}
-
-
-
-
-
-
-
-
-void (*old_addProcessDamage)(void *instance, void *damageSettle);
-void addProcessDamage(void *instance, void *damageSettle)
-{
-
-     if(instance != NULL&&nodamage)
-     {
-     
-     return ({});
-     
-     
-     
-     }
-     
-     
-
-return old_addProcessDamage(instance, damageSettle);
-}
-
-
-
-float slidervalue;
-void (*old_playerProcessDamage)(void *instance, void *damageSettle);
-void playerProcessDamage(void *instance, void *damageSettle)
-{
-
-  if(instance != NULL)
-  
-  {
-  
-  if(damageSettle && slidervalue > 0)
-  
-  
-  {
-
-    *(float*)((uintptr_t)damageSettle + 0x34) = 90000 * slidervalue;
-  
-  
-  }
-  if(damageSettle&&critical)
-  {
-  
-    *(bool*)((uintptr_t)damageSettle + 0x2c) = true;
-  
-  }
-  
-  
-  }
-  
-  
-
-
-return old_playerProcessDamage(instance, damageSettle);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return;}
 void SetupImGui() {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -270,27 +95,11 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplAndroid_NewFrame(g_GlWidth, g_GlHeight);
     ImGui::NewFrame();
-    
-    
-    
-    
-    
-     if (ImGui::Begin("Mod by AMIYA | telegram: @MyAlessa", nullptr))
-     {
-    
-      
+    if (ImGui::Begin("Mod by AMIYA | telegram: @MyAlessa", nullptr))
+     { 
       if (ImGui::BeginTabBar("telegram: @MyAlessa", ImGuiTabBarFlags_None)) {
     if (ImGui::BeginTabItem("Hack Menu"))
-    
-    
-    {	    
-	    
-	    
-
-    ImGui::Checkbox("Gold Hack", &nodamage);
-    ImGui::Checkbox("skill no cd",&nocooldown);
-    ImGui::Checkbox("Mana",&manahack);
-	ImGui::Checkbox("Coin",&cobapertama);
+    {	
 
       ImGui::EndTabItem(); 
        }
@@ -300,23 +109,6 @@ EGLBoolean hook_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface) {
 			       
 
     if (ImGui::BeginTabItem("Hack Multiplier")){
-    
-    
-    ImGui::SliderFloat("Damage", &slidervalue, 0, 1000);
-       
-       
-       
-       
-       
-       
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
 	    
 
         ImGui::EndTabItem(); 
@@ -348,24 +140,6 @@ void hack_start(const char *_game_data_dir) {
     // TODO: hooking/patching here
 
 
-
-
-DobbyHook(getAbsAddress(0x33710b8), (void*) addProcessDamage, (void**)&old_addProcessDamage);
-
-
-DobbyHook(getAbsAddress(0x337495c), (void*) playerProcessDamage, (void**)&old_playerProcessDamage);
-
-
-DobbyHook(getAbsAddress(0x03a6a344), (void*) addEnterCd, (void**)&old_addEnterCd);
-
-
-
-DobbyHook(getAbsAddress(0x02302478), (void*) addProcessExpendMp, (void**)&old_addProcessExpendMp);
-
-
-DobbyHook(getAbsAddress(0x02412bb4), (void*) addNewDropCoin, (void**)&old_addNewDropCoin);
-
-      //
 
 
 
